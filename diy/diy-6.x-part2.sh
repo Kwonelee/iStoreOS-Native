@@ -94,7 +94,7 @@ function git_sparse_clone() {
   git clone --depth=1 -b $branch --single-branch --filter=blob:none --sparse $repourl
   repodir=$(echo $repourl | awk -F '/' '{print $(NF)}')
   cd $repodir && git sparse-checkout set $@
-  mv -f $@ ../package
+  mv -f $@ ../package/new
   cd .. && rm -rf $repodir
 }
 
@@ -110,7 +110,5 @@ git clone https://github.com/sbwml/feeds_packages_lang_node-prebuilt feeds/packa
 git_sparse_clone master https://github.com/vernesong/OpenClash luci-app-openclash
 git_sparse_clone main https://github.com/gdy666/luci-app-lucky luci-app-lucky lucky
 git_sparse_clone main https://github.com/sbwml/luci-app-openlist2 luci-app-openlist2 openlist2
-git clone -b master https://github.com/w9315273/luci-app-adguardhome package/luci-app-adguardhome
-
-# sbwml/openwrt_pkgs
+git clone -b master https://github.com/w9315273/luci-app-adguardhome package/new/luci-app-adguardhome
 git_sparse_clone main https://github.com/sbwml/openwrt_pkgs filebrowser luci-app-filebrowser-go luci-app-ramfree
