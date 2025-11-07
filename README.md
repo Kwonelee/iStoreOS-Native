@@ -43,3 +43,9 @@
 - [istoreos](https://github.com/istoreos/istoreos)
 - [linux-6.6.y](https://github.com/unifreq/linux-6.6.y)
 - [Actions-iStoreOS-RK35XX-24.10](https://github.com/xiaomeng9597/Actions-iStoreOS-RK35XX-24.10)
+
+# ⚠️免责声明
+- 本固件仅供学习研究，请勿用于商业用途
+- 使用本固件所带来的一切后果由使用者自行承担
+- 不保证完全无 bug，开发者不提供定制支持
+- 请遵守国家网络安全相关法律法规
