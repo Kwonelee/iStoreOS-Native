@@ -1,6 +1,6 @@
 # iStoreOS-Native
 
-# 🤔Introduce
+# 🤔 Introduce
 > **🔈 本项目旨在将 RK3399 平台适配至 iStoreOS 官方源码，并通过原生编译构建 `sysupgrade` 格式固件**
 
 > **🔈 RK3399 算是移植中的一块“硬骨头”，只要把它啃下来，其他机型的移植工作基本上就能水到渠成了**
@@ -9,7 +9,7 @@
 
 > **使用此仓库必须设置机密token，Actions云编译固件时需要用到，通常在仓库设置里面。机密键名为 `GH_TOKEN`（严禁在仓库可视代码中填写，否则后果自负）**
 
-# 😅Built-in package plan
+# 😅 Built-in package plan
 <div align="center">
 
 | 插件                     | 状态 | 源码地址                                                                   | 备注         |
@@ -25,7 +25,7 @@
 
 </div>
 
-# 😊Supported devices
+# 😊 Supported devices
 <div align="center">
 
 | 设备       | 状态   | 包名                                                                    | 备注               |
@@ -39,20 +39,20 @@
 
 </div>
 
-# 🤗Screenshot
+# 🤗 Screenshot
 ![screenshots](./configfiles/screenshot/screenshot2.png)
 
-# 🌟Star戳一戳，好运加满！😆
+# 🌟 Star戳一戳，好运加满！😆
 > **"点过 `Star` 的朋友，颜值与智慧双双在线！✨"**
 
 > **"您的每一个⭐️，都是开源土壤里的一缕阳光，让灵感发芽，让创造生长~"**
 
-# 🙏Thanks
+# 🎉 Thanks
 - [istoreos](https://github.com/istoreos/istoreos)
 - [linux-6.6.y](https://github.com/unifreq/linux-6.6.y)
 - [Actions-iStoreOS-RK35XX-24.10](https://github.com/xiaomeng9597/Actions-iStoreOS-RK35XX-24.10)
 
-# ⚠️免责声明
+# 🙏 免责声明
 - 📚 本固件仅供学习研究，严禁用于任何商业用途
 - 🤝 使用本固件产生的所有后果均由使用者自行承担
 - ⚠️ 固件仍可能存在缺陷，开发者不提供任何形式的技术支持
