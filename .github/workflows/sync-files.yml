@@ -110,6 +110,10 @@ jobs:
            sed -i 's/^CONFIG_PACKAGE_luci-i18n-ota-zh-cn=y/# CONFIG_PACKAGE_luci-i18n-ota-zh-cn is not set/' ./armv8/.config
            
            sed -i 's/^CONFIG_PACKAGE_kmod-aic8800s=m/# CONFIG_PACKAGE_kmod-aic8800s is not set/' ./armv8/.config
+           
+           sed -i 's/^CONFIG_PACKAGE_CONFIG_MODEMMANAGER_WITH_MBIM=y/# CONFIG_PACKAGE_CONFIG_MODEMMANAGER_WITH_MBIM is not set/' ./armv8/.config
+           sed -i 's/^CONFIG_PACKAGE_CONFIG_MODEMMANAGER_WITH_QMI=y/# CONFIG_PACKAGE_CONFIG_MODEMMANAGER_WITH_QMI is not set/' ./armv8/.config
+           sed -i 's/^CONFIG_PACKAGE_CONFIG_MODEMMANAGER_WITH_QRTR=y/# CONFIG_PACKAGE_CONFIG_MODEMMANAGER_WITH_QRTR is not set/' ./armv8/.config
            # ----------------结束----------------
            echo -e "\\n$configdata" >> ./armv8/.config
            # 清除.config配置文件里面重复的配置项
