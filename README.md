@@ -30,14 +30,14 @@
 ## 😅 第三方插件 [![](https://img.shields.io/badge/-第三方插件-FFFFFF.svg)](#-第三方插件-)
 <div align="center">
 
-| 插件                     | 状态 | 源码地址                                                                   | 备注         |
-|:------------------------:|:----:| ------------------------------------------------------------------------- | ------------ |
-| ramfree释放内存           | ✅   | [sbwml/openwrt_pkgs](https://github.com/sbwml/openwrt_pkgs)              | 🟢 已测试    |
-| FileBrowser文件浏览器     | ✅   | [sbwml/openwrt_pkgs](https://github.com/sbwml/openwrt_pkgs)              | 🟢 已测试    |
-| lucky                    | ✅   | [luci-app-lucky](https://github.com/gdy666/luci-app-lucky)               | 🟢 已测试    |
-| openlist2                | ✅   | [luci-app-openlist2](https://github.com/sbwml/luci-app-openlist2)        | 🟢 已测试    |
-| adguardhome              | ✅   | [w9315273/adguardhome](https://github.com/w9315273/luci-app-adguardhome) ; [sirpdboy/adguardhome](https://github.com/sirpdboy/luci-app-adguardhome) | 🟢 已测试    |
-| 其他                     | ⏳   |                                                                          |               |
+| 插件                     |  状态   | 源码地址                                                                  | 备注         |
+|:------------------------:|:------:| ------------------------------------------------------------------------- | ------------ |
+| ramfree释放内存           |  ✅   | [sbwml/openwrt_pkgs](https://github.com/sbwml/openwrt_pkgs)               | 🟢 已测试    |
+| FileBrowser文件浏览器     |  ✅   | [sbwml/openwrt_pkgs](https://github.com/sbwml/openwrt_pkgs)               | 🟢 已测试    |
+| lucky                    |  ✅   | [luci-app-lucky](https://github.com/gdy666/luci-app-lucky)                | 🟢 已测试    |
+| openlist2                |  ✅   | [luci-app-openlist2](https://github.com/sbwml/luci-app-openlist2)         | 🟢 已测试    |
+| adguardhome              |  ✅   | [w9315273/adguardhome](https://github.com/w9315273/luci-app-adguardhome) ; [sirpdboy/adguardhome](https://github.com/sirpdboy/luci-app-adguardhome) | 🟢 已测试     |
+| 其他                     |  ⏳   |                                                                           |               |
 
 ✅ 支持 - ⏳ 计划中 - ⭕ 不支持
 
