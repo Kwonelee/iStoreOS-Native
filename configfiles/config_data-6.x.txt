@@ -1,10 +1,6 @@
 CONFIG_TARGET_DEVICE_rockchip_armv8_DEVICE_tvi_tvi3315a=y
 CONFIG_TARGET_DEVICE_rockchip_armv8_DEVICE_jp_jp-tvbox=y
 
-CONFIG_PACKAGE_lucky=y
-CONFIG_PACKAGE_luci-app-lucky=y
-CONFIG_PACKAGE_luci-i18n-lucky-zh-cn=y
-
 CONFIG_PACKAGE_luci-app-adguardhome=y
 CONFIG_PACKAGE_luci-i18n-adguardhome-zh-cn=y
 
