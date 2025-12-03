@@ -80,6 +80,5 @@ function git_sparse_clone() {
 }
 
 # 常见插件
-git_sparse_clone main https://github.com/gdy666/luci-app-lucky luci-app-lucky lucky
 git clone -b master https://github.com/w9315273/luci-app-adguardhome package/new/luci-app-adguardhome
 git_sparse_clone main https://github.com/sbwml/openwrt_pkgs filebrowser luci-app-filebrowser-go luci-app-ramfree
