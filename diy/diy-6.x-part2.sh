@@ -62,31 +62,12 @@ cp -f $GITHUB_WORKSPACE/configfiles/dts/rk3568/rk3566-jp-tvbox.dts target/linux/
 
 
 # ================================================================
-# DIY编译⬇⬇⬇
+# DIY部分
 # ================================================================
-# 集成core
-mkdir -p files/etc/openclash/core
-CLASH_META_URL="https://raw.githubusercontent.com/vernesong/OpenClash/core/master/meta/clash-linux-arm64.tar.gz"
-wget -qO- $CLASH_META_URL | tar xOvz > files/etc/openclash/core/clash_meta
-chmod +x files/etc/openclash/core/clash*
-
-# 集成config
-mkdir -p files/etc/config
-wget -qO- https://raw.githubusercontent.com/Kwonelee/Kwonelee/refs/heads/main/rule/openclash > files/etc/config/openclash
-
 # 移除要替换的包
 rm -rf feeds/packages/net/adguardhome
 rm -rf feeds/third_party/luci-app-LingTiGameAcc
 rm -rf feeds/luci/applications/luci-app-filebrowser
-
-# Set Rust build arg llvm.download-ci-llvm to false.
-RUST_MAKEFILE="feeds/packages/lang/rust/Makefile"
-if [[ -f "${RUST_MAKEFILE}" ]]; then
-  printf "Modifying %s...\n" "${RUST_MAKEFILE}"
-  sed -i 's/--set=llvm\.download-ci-llvm=true/--set=llvm.download-ci-llvm=false/' "${RUST_MAKEFILE}"
-else
-  echo "File ${RUST_MAKEFILE} does not exist." >&2
-fi
 
 # Git稀疏克隆，只克隆指定目录到本地
 function git_sparse_clone() {
@@ -98,17 +79,7 @@ function git_sparse_clone() {
   cd .. && rm -rf $repodir
 }
 
-# golang
-rm -rf feeds/packages/lang/golang
-git clone https://github.com/sbwml/packages_lang_golang -b 25.x feeds/packages/lang/golang
-
-# node
-rm -rf feeds/packages/lang/node
-git clone https://github.com/sbwml/feeds_packages_lang_node-prebuilt feeds/packages/lang/node -b packages-24.10
-
 # 常见插件
-git_sparse_clone master https://github.com/vernesong/OpenClash luci-app-openclash
 git_sparse_clone main https://github.com/gdy666/luci-app-lucky luci-app-lucky lucky
-git_sparse_clone main https://github.com/sbwml/luci-app-openlist2 luci-app-openlist2 openlist2
 git clone -b master https://github.com/w9315273/luci-app-adguardhome package/new/luci-app-adguardhome
 git_sparse_clone main https://github.com/sbwml/openwrt_pkgs filebrowser luci-app-filebrowser-go luci-app-ramfree
