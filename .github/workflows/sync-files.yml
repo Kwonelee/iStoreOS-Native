@@ -44,6 +44,10 @@ jobs:
            sed -i 's/^CONFIG_TARGET_DEVICE_rockchip_armv8_DEVICE_radxa_rock-4se=y/# CONFIG_TARGET_DEVICE_rockchip_armv8_DEVICE_radxa_rock-4se is not set/' ./armv8/.config
            sed -i 's/^CONFIG_TARGET_DEVICE_rockchip_armv8_DEVICE_roceos_k60pro=y/# CONFIG_TARGET_DEVICE_rockchip_armv8_DEVICE_roceos_k60pro is not set/' ./armv8/.config
            sed -i 's/^CONFIG_TARGET_DEVICE_rockchip_armv8_DEVICE_xunlong_orangepi-5-plus=y/# CONFIG_TARGET_DEVICE_rockchip_armv8_DEVICE_xunlong_orangepi-5-plus is not set/' ./armv8/.config
+           sed -i 's/^CONFIG_TARGET_DEVICE_rockchip_armv8_DEVICE_easepi_ars4=y/# CONFIG_TARGET_DEVICE_rockchip_armv8_DEVICE_easepi_ars4 is not set/' ./armv8/.config
+           sed -i 's/^CONFIG_TARGET_DEVICE_rockchip_armv8_DEVICE_easepi_r1-lite=y/# CONFIG_TARGET_DEVICE_rockchip_armv8_DEVICE_easepi_r1-lite is not set/' ./armv8/.config
+           sed -i 's/^CONFIG_TARGET_DEVICE_rockchip_armv8_DEVICE_friendlyarm_nanopi-r5s=y/# CONFIG_TARGET_DEVICE_rockchip_armv8_DEVICE_friendlyarm_nanopi-r5s is not set/' ./armv8/.config
+           sed -i 's/^CONFIG_TARGET_DEVICE_rockchip_armv8_DEVICE_friendlyarm_nanopi-r6s=y/# CONFIG_TARGET_DEVICE_rockchip_armv8_DEVICE_friendlyarm_nanopi-r6s is not set/' ./armv8/.config
            
            sed -i 's/^CONFIG_PACKAGE_adb=y/# CONFIG_PACKAGE_adb is not set/' ./armv8/.config
            sed -i 's/^CONFIG_PACKAGE_adb-enablemodem=y/# CONFIG_PACKAGE_adb-enablemodem is not set/' ./armv8/.config
