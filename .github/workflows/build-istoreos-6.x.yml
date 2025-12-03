@@ -8,7 +8,6 @@ on:
 
 env:
   REPO_URL: https://github.com/istoreos/istoreos
-  # REPO_BRANCH: main
   FEEDS_CONF: feeds.conf
   CONFIG_FILE: .config
   DIY_P1_SH: diy/diy-6.x-part1.sh
@@ -25,9 +24,7 @@ jobs:
     strategy:
       matrix:
         REPO_BRANCH:
-          # - main
           - istoreos-24.10
-          # - istoreos-23.05
         ARCHITECTURE:
           - armv8
         os:
