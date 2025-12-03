@@ -36,7 +36,6 @@
 | ramfree释放内存           |  ✅   | [sbwml/openwrt_pkgs](https://github.com/sbwml/openwrt_pkgs)               | 🟢 已测试    |
 | FileBrowser文件浏览器     |  ✅   | [sbwml/openwrt_pkgs](https://github.com/sbwml/openwrt_pkgs)               | 🟢 已测试    |
 | lucky                    |  ✅   | [luci-app-lucky](https://github.com/gdy666/luci-app-lucky)                | 🟢 已测试    |
-| openlist2                |  ✅   | [luci-app-openlist2](https://github.com/sbwml/luci-app-openlist2)         | 🟢 已测试    |
 | adguardhome              |  ✅   | [w9315273/adguardhome](https://github.com/w9315273/luci-app-adguardhome) ; [sirpdboy/adguardhome](https://github.com/sirpdboy/luci-app-adguardhome) | 🟢 已测试     |
 | 其他                     |  ⏳   |                                                                           |               |
 
@@ -49,7 +48,7 @@
 
 | 设备         |  状态     |  包名                                                                   | 备注                      |
 |-------------|:---------:| ----------------------------------------------------------------------- | ------------------------- |
-| tvi3315a    |    ✅    | istoreos-rockchip-armv8-tvi_tvi3315a-squashfs-sysupgrade.img.gz         | ⭕ 最新源码不可用后续移除   |
+| tvi3315a    |    ✅    | istoreos-rockchip-armv8-tvi_tvi3315a-squashfs-sysupgrade.img.gz         | ⭕ 最新源码不可用后续移除  |
 | jp-tvbox    |    ✅    | istoreos-rockchip-armv8-jp_jp-tvbox-squashfs-sysupgrade.img.gz          | 🟢 已测试                 |
 | 其他        |    ⏳    |                                                                         |                           |
 
