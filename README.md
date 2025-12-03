@@ -35,7 +35,6 @@
 |:------------------------:|:------:| ------------------------------------------------------------------------- | ------------ |
 | ramfree释放内存           |  ✅   | [sbwml/openwrt_pkgs](https://github.com/sbwml/openwrt_pkgs)               | 🟢 已测试    |
 | FileBrowser文件浏览器     |  ✅   | [sbwml/openwrt_pkgs](https://github.com/sbwml/openwrt_pkgs)               | 🟢 已测试    |
-| lucky                    |  ✅   | [luci-app-lucky](https://github.com/gdy666/luci-app-lucky)                | 🟢 已测试    |
 | adguardhome              |  ✅   | [w9315273/adguardhome](https://github.com/w9315273/luci-app-adguardhome) ; [sirpdboy/adguardhome](https://github.com/sirpdboy/luci-app-adguardhome) | 🟢 已测试     |
 | 其他                     |  ⏳   |                                                                           |               |
 
