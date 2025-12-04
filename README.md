@@ -24,7 +24,7 @@
 > [!TIP]
 > 🔈本项目提供了一个参考实现，用于将 RK 平台适配至 iStoreOS 官方源码，并能通过原生编译生成 sysupgrade 格式的固件；该格式固件支持手动在线刷写固件，无需重复刷机
 > 
-> 😂如果您在适配其他 RK 机型时遇到困难，欢迎您直接使用右侧项目😂👉👉👉[iStoreOS-Actions](https://github.com/Kwonelee/iStoreOS-Actions/releases)
+> 😂如果您在适配其他 RK 机型时遇到困难，欢迎您直接使用右侧项目😂👉👉👉[iStoreOS-Actions](https://github.com/Kwonelee/iStoreOS-Actions)
 > 
 > 使用此仓库必须设置机密token，Actions云编译固件时需要用到，通常在仓库设置里面。机密键名为 `GH_TOKEN`（严禁在仓库可视代码中填写，否则后果自负）
 
