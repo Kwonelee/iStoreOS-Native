@@ -41,7 +41,7 @@
 ## 😊 支持设备 [![](https://img.shields.io/badge/-支持设备-FFFFFF.svg)](#-支持设备-)
 | 设备         |  状态     |  包名                                                                  | 备注                        |
 |-------------|:---------:| ----------------------------------------------------------------------- | ---------------------------- |
-| tvi3315a    |    ✅    | istoreos-rockchip-armv8-tvi_tvi3315a-squashfs-sysupgrade.img.gz         | ⭕ 最新源码不可用，后续将移除 |
+| tvi3315a    |    ✅    | istoreos-rockchip-armv8-tvi_tvi3315a-squashfs-sysupgrade.img.gz         | ⭕ 暂不可用                  |
 | jp-tvbox    |    ✅    | istoreos-rockchip-armv8-jp_jp-tvbox-squashfs-sysupgrade.img.gz          | 🟢 已测试                    |
 | 其他        |    ⏳    |                                                                          |                              |
 
