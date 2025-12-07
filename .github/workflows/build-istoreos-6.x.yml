@@ -8,7 +8,7 @@ on:
 
 env:
   # REPO_URL: https://github.com/istoreos/istoreos
-  REPO_URL: https://github.com/xueshanjuelian/istoreos
+  REPO_URL: https://github.com/Kwonelee/istoreos
   FEEDS_CONF: feeds.conf
   CONFIG_FILE: .config
   DIY_P1_SH: diy/diy-6.x-part1.sh
