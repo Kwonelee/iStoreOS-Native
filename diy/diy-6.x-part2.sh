@@ -60,6 +60,7 @@ cp -f $GITHUB_WORKSPACE/configfiles/dts/rk3568/rk3566-jp-tvbox.dts target/linux/
 # RK35xx示例结束
 # ================================================================
 
+sed -i 's/DEVICE_PACKAGES := kmod-nvme kmod-scsi-core/DEVICE_PACKAGES += kmod-nvme kmod-scsi-core/g' target/linux/rockchip/image/legacy.mk
 
 # ================================================================
 # DIY部分
