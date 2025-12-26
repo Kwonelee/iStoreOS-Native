@@ -69,6 +69,16 @@ rm -rf feeds/packages/net/adguardhome
 rm -rf feeds/third_party/luci-app-LingTiGameAcc
 rm -rf feeds/luci/applications/luci-app-filebrowser
 
+# clash_meta
+mkdir -p files/etc/openclash/core
+CLASH_META_URL="https://raw.githubusercontent.com/vernesong/OpenClash/core/master/meta/clash-linux-arm64.tar.gz"
+wget -qO- $CLASH_META_URL | tar xOvz > files/etc/openclash/core/clash_meta
+chmod +x files/etc/openclash/core/clash*
+
+# clash_config
+mkdir -p files/etc/config
+wget -qO- https://raw.githubusercontent.com/Kwonelee/Kwonelee/refs/heads/main/rule/openclash > files/etc/config/openclash
+
 # Git稀疏克隆，只克隆指定目录到本地
 function git_sparse_clone() {
   branch="$1" repourl="$2" && shift 2
@@ -80,6 +90,8 @@ function git_sparse_clone() {
 }
 
 # 常见插件
+git_sparse_clone master https://$github/vernesong/OpenClash luci-app-openclash
+git_sparse_clone main https://$github/gdy666/luci-app-lucky luci-app-lucky lucky
 git clone -b master https://github.com/w9315273/luci-app-adguardhome package/new/luci-app-adguardhome
 git_sparse_clone main https://github.com/sbwml/openwrt_pkgs filebrowser luci-app-filebrowser-go luci-app-ramfree
 sed -i 's/2.31.2/2.52.0/g' package/new/filebrowser/Makefile
