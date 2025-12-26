@@ -90,8 +90,8 @@ function git_sparse_clone() {
 }
 
 # 常见插件
-git_sparse_clone master https://$github/vernesong/OpenClash luci-app-openclash
-git_sparse_clone main https://$github/gdy666/luci-app-lucky luci-app-lucky lucky
+git_sparse_clone master https://github.com/vernesong/OpenClash luci-app-openclash
+git_sparse_clone main https://github.com/gdy666/luci-app-lucky luci-app-lucky lucky
 git clone -b master https://github.com/w9315273/luci-app-adguardhome package/new/luci-app-adguardhome
 git_sparse_clone main https://github.com/sbwml/openwrt_pkgs filebrowser luci-app-filebrowser-go luci-app-ramfree
 sed -i 's/2.31.2/2.52.0/g' package/new/filebrowser/Makefile
