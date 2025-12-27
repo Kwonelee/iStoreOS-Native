@@ -174,6 +174,13 @@ define U-Boot/rk3566/Default
   TPL:=rk3566_ddr_1056MHz_v1.21.bin
 endef
 
+define U-Boot/station-m2-rk3566
+  $(U-Boot/rk3566/Default)
+  NAME:=Station M2
+  BUILD_DEVICES:= \
+    firefly_station-m2
+endef
+
 define U-Boot/nanopi-r3s-rk3566
   $(U-Boot/rk3566/Default)
   NAME:=NanoPi R3S
@@ -370,6 +377,7 @@ UBOOT_TARGETS := \
   radxa-cm3-io-rk3566 \
   radxa-zero-3-rk3566 \
   rock-3c-rk3566 \
+  station-m2-rk3566 \
   easepi-rk3568 \
   easepi-rk3568-rk809 \
   bpi-r2-pro-rk3568 \
