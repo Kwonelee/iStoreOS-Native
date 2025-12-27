@@ -43,24 +43,19 @@ cp -f $GITHUB_WORKSPACE/configfiles/patch/800-add-rk3399-tvi3315a-dtb-to-makefil
 # ================================================================
 # 移植RK3566示例，其他RK35xx可模仿
 # ================================================================
-# 增加jp-tvbox设备
-echo -e "\\ndefine Device/jp_jp-tvbox
-\$(call Device/Legacy/rk3566,\$(1))
-  DEVICE_VENDOR := Jp
-  DEVICE_MODEL := JP TVBOX
-  DEVICE_DTS := rk3568/rk3566-jp-tvbox
-  SUPPORTED_DEVICES += jp,jp-tvbox
-  DEVICE_PACKAGES += kmod-scsi-core
-endef
-TARGET_DEVICES += jp_jp-tvbox" >> target/linux/rockchip/image/legacy.mk
+# 增加设备
+cp -f $GITHUB_WORKSPACE/configfiles/uboot-rockchip/legacy.mk target/linux/rockchip/image/legacy.mk
+
+# 复制dts与配置文件到package/boot/uboot-rockchip
+cp -f $GITHUB_WORKSPACE/configfiles/dts/rk3568/rk3566-roc-pc.dts package/boot/uboot-rockchip/src/arch/arm/dts/
+cp -f $GITHUB_WORKSPACE/configfiles/uboot-rockchip/rk3566-station-m2-u-boot.dtsi package/boot/uboot-rockchip/src/arch/arm/dts/
+cp -f $GITHUB_WORKSPACE/configfiles/uboot-rockchip/station-m2-rk3566_defconfig package/boot/uboot-rockchip/src/configs/
 
 # 复制dts到target/linux/rockchip/dts/rk3568
 cp -f $GITHUB_WORKSPACE/configfiles/dts/rk3568/rk3566-jp-tvbox.dts target/linux/rockchip/dts/rk3568/
 # ================================================================
 # RK35xx示例结束
 # ================================================================
-
-sed -i 's/DEVICE_PACKAGES := kmod-nvme kmod-scsi-core/DEVICE_PACKAGES += kmod-nvme kmod-scsi-core/g' target/linux/rockchip/image/legacy.mk
 
 # ================================================================
 # DIY部分
