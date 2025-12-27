@@ -11,6 +11,8 @@
 #include <dt-bindings/soc/rockchip,vop2.h>
 #include <rockchip/rk3566.dtsi>
 
+#include "rk3568-ramoops.dtsi"
+
 / {
 	model = "JP TVbox";
 	compatible = "jp,jp-tvbox", "rockchip,rk3566";
