@@ -50,7 +50,7 @@ echo -e "\\ndefine Device/jp_jp-tvbox
   DEVICE_MODEL := JP TVBOX
   DEVICE_DTS := rk3568/rk3566-jp-tvbox
   SUPPORTED_DEVICES += jp,jp-tvbox
-  DEVICE_PACKAGES := kmod-scsi-core
+  DEVICE_PACKAGES += kmod-scsi-core
 endef
 TARGET_DEVICES += jp_jp-tvbox" >> target/linux/rockchip/image/legacy.mk
 
