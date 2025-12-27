@@ -129,9 +129,20 @@ $(call Device/Legacy/rk3566,$(1))
   DEVICE_MODEL := Station M2 / RK3566 ROC PC
   DEVICE_DTS := rk3568/rk3566-roc-pc
   SUPPORTED_DEVICES += firefly,rk3566-roc-pc firefly,station-m2
-  DEVICE_PACKAGES := kmod-nvme kmod-scsi-core
+  UBOOT_DEVICE_NAME := station-m2-rk3566
+  DEVICE_PACKAGES += kmod-nvme kmod-scsi-core
 endef
 TARGET_DEVICES += firefly_station-m2
+
+define Device/jp_jp-tvbox
+$(call Device/Legacy/rk3566,$(1))
+  DEVICE_VENDOR := Jp
+  DEVICE_MODEL := JP TVBOX
+  DEVICE_DTS := rk3568/rk3566-jp-tvbox
+  SUPPORTED_DEVICES += jp,jp-tvbox
+  DEVICE_PACKAGES += kmod-scsi-core
+endef
+TARGET_DEVICES += jp_jp-tvbox
 
 define Device/friendlyarm_nanopi-r5c
 $(call Device/Legacy/rk3568,$(1))
