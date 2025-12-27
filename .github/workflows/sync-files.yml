@@ -48,6 +48,7 @@ jobs:
            sed -i 's/^CONFIG_TARGET_DEVICE_rockchip_armv8_DEVICE_easepi_r1-lite=y/# CONFIG_TARGET_DEVICE_rockchip_armv8_DEVICE_easepi_r1-lite is not set/' ./armv8/.config
            sed -i 's/^CONFIG_TARGET_DEVICE_rockchip_armv8_DEVICE_friendlyarm_nanopi-r5s=y/# CONFIG_TARGET_DEVICE_rockchip_armv8_DEVICE_friendlyarm_nanopi-r5s is not set/' ./armv8/.config
            sed -i 's/^CONFIG_TARGET_DEVICE_rockchip_armv8_DEVICE_friendlyarm_nanopi-r6s=y/# CONFIG_TARGET_DEVICE_rockchip_armv8_DEVICE_friendlyarm_nanopi-r6s is not set/' ./armv8/.config
+           sed -i 's/^CONFIG_TARGET_DEVICE_rockchip_armv8_DEVICE_easepi_r1=y/# CONFIG_TARGET_DEVICE_rockchip_armv8_DEVICE_easepi_r1 is not set/' ./armv8/.config
            
            sed -i 's/^CONFIG_PACKAGE_adb=y/# CONFIG_PACKAGE_adb is not set/' ./armv8/.config
            sed -i 's/^CONFIG_PACKAGE_adb-enablemodem=y/# CONFIG_PACKAGE_adb-enablemodem is not set/' ./armv8/.config
