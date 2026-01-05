@@ -16,8 +16,8 @@ jobs:
     - name: 下载架构编译配置文件
       run: |
         mkdir -p ./armv8
-        wget -O ./armv8/feeds.conf https://fw0.koolcenter.com/iStoreOS/easepi-r1/feeds.conf --no-check-certificate
-        wget -O ./armv8/.config https://fw0.koolcenter.com/iStoreOS/easepi-r1/config.buildinfo --no-check-certificate
+        wget --no-check-certificate --no-cache -O ./armv8/feeds.conf https://fw0.koolcenter.com/iStoreOS/easepi-r1/feeds.conf
+        wget --no-check-certificate --no-cache -O ./armv8/.config https://fw0.koolcenter.com/iStoreOS/easepi-r1/config.buildinfo
 
         FILE_PATH="./armv8/.config"
         if [ -f "$FILE_PATH" ] && [ -s "$FILE_PATH" ]; then
