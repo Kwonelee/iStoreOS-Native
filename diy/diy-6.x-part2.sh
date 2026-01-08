@@ -7,13 +7,9 @@
 # Blog: https://p3terx.com
 #===============================================
 
-# 集成设备无线
-mkdir -p package/base-files/files/lib/firmware/brcm
-cp -a $GITHUB_WORKSPACE/configfiles/firmware/brcm/* package/base-files/files/lib/firmware/brcm/
-
-# ================================================================
+# ============================================================================================================
 # 移植RK3399示例，其他RK3399可模仿
-# ================================================================
+# ============================================================================================================
 # 增加设备
 echo -e "\\ndefine Device/tvi_tvi3315a
   DEVICE_VENDOR := Tvi
@@ -36,13 +32,13 @@ cp -f $GITHUB_WORKSPACE/configfiles/dts/rk3399/{rk3399.dtsi,rk3399-opp.dtsi,rk33
 
 # 添加dtb补丁到target/linux/rockchip/patches-6.6
 cp -f $GITHUB_WORKSPACE/configfiles/patch/800-add-rk3399-tvi3315a-dtb-to-makefile.patch target/linux/rockchip/patches-6.6/
-# ================================================================
+# ============================================================================================================
 # RK3399示例结束
-# ================================================================
+# ============================================================================================================
 
-# ================================================================
+# ============================================================================================================
 # 移植RK3566示例，其他RK35xx可模仿
-# ================================================================
+# ============================================================================================================
 # 增加设备
 cp -f $GITHUB_WORKSPACE/configfiles/uboot-rockchip/legacy.mk target/linux/rockchip/image/legacy.mk
 
@@ -53,13 +49,13 @@ cp -f $GITHUB_WORKSPACE/configfiles/uboot-rockchip/station-m2-rk3566_defconfig p
 
 # 复制dts到target/linux/rockchip/dts/rk3568
 cp -f $GITHUB_WORKSPACE/configfiles/dts/rk3568/rk3566-jp-tvbox.dts target/linux/rockchip/dts/rk3568/
-# ================================================================
+# ============================================================================================================
 # RK35xx示例结束
-# ================================================================
+# ============================================================================================================
 
-# ================================================================
-# DIY部分
-# ================================================================
+# ============================================================================================================
+# DIY部分⬇⬇⬇
+# ============================================================================================================
 # 移除要替换的包
 rm -rf feeds/packages/net/adguardhome
 rm -rf feeds/third_party/luci-app-LingTiGameAcc
@@ -74,6 +70,10 @@ chmod +x files/etc/openclash/core/clash*
 # clash_config
 mkdir -p files/etc/config
 wget -qO- https://raw.githubusercontent.com/Kwonelee/Kwonelee/refs/heads/main/rule/openclash > files/etc/config/openclash
+
+# 集成无线驱动
+mkdir -p package/base-files/files/lib/firmware/brcm
+cp -a $GITHUB_WORKSPACE/configfiles/firmware/brcm/* package/base-files/files/lib/firmware/brcm/
 
 # 处理Rust报错
 sed -i 's/ci-llvm=true/ci-llvm=false/g' feeds/packages/lang/rust/Makefile
@@ -91,6 +91,6 @@ function git_sparse_clone() {
 # 常见插件
 git_sparse_clone master https://github.com/vernesong/OpenClash luci-app-openclash
 git_sparse_clone main https://github.com/gdy666/luci-app-lucky luci-app-lucky lucky
-git clone -b master https://github.com/w9315273/luci-app-adguardhome package/new/luci-app-adguardhome
 git_sparse_clone main https://github.com/sbwml/openwrt_pkgs filebrowser luci-app-filebrowser-go luci-app-ramfree
 sed -i 's/2.31.2/2.53.1/g' package/new/filebrowser/Makefile
+git clone --depth=1 -b master https://github.com/w9315273/luci-app-adguardhome package/new/luci-app-adguardhome
