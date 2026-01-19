@@ -77,7 +77,7 @@ jobs:
         sudo rm -rf get-pip.py
         sudo pip install pyelftools
         echo "------------------------------- 清理Docker镜像和软件 -------------------------------"
-        docker rmi `docker images -q`
+        [ -n "$(docker images -q)" ] && docker rmi $(docker images -q)
         docker image prune -a -f
         sudo -E apt-get -y purge azure-cli ghc* zulu* hhvm firefox google* dotnet* powershell openjdk* adoptopenjdk* mysql* php* mongodb* moby* snapd* android* || true
         sudo -E apt-get -qq autoremove --purge
