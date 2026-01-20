@@ -11,13 +11,13 @@
 # 移植RK3399示例，其他RK3399可模仿
 # ============================================================================================================
 # 增加设备
-echo -e "\\ndefine Device/tvi_tvi3315a
-  DEVICE_VENDOR := Tvi
-  DEVICE_MODEL := TVI3315A
+echo -e "\\ndefine Device/nanopc-T4
+  DEVICE_VENDOR := nanopc
+  DEVICE_MODEL := T4
   SOC := rk3399
-  UBOOT_DEVICE_NAME := tvi3315a-rk3399
+  UBOOT_DEVICE_NAME := T4-rk3399
 endef
-TARGET_DEVICES += tvi_tvi3315a" >> target/linux/rockchip/image/armv8.mk
+TARGET_DEVICES += nanopc-T4" >> target/linux/rockchip/image/armv8.mk
 
 # 替换package/boot/uboot-rockchip/Makefile
 cp -f $GITHUB_WORKSPACE/configfiles/uboot-rockchip/Makefile package/boot/uboot-rockchip/Makefile
