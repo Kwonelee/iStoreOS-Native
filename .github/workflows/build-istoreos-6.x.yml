@@ -192,9 +192,7 @@ jobs:
         tag_name: ${{ steps.tag.outputs.release_tag }}
         body_path: release.txt
         files: |
-          ${{ env.FIRMWARE }}/*station-m2-squashfs-sysupgrade.img.gz
-          ${{ env.FIRMWARE }}/*tvi3315a-squashfs-sysupgrade.img.gz
-          ${{ env.FIRMWARE }}/*jp-tvbox-squashfs-sysupgrade.img.gz
+          ${{ env.FIRMWARE }}/*squashfs-sysupgrade.img.gz
 
     - name: 删除运行记录
       uses: Mattraks/delete-workflow-runs@main
