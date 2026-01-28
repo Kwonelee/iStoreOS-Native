@@ -63,4 +63,4 @@ echo $date_version > version
 #sed -i "s/OPENWRT_RELEASE.*/OPENWRT_RELEASE=\"%D %V ${date_version} by ${author}\"/g" package/base-files/files/usr/lib/os-release
 
 # 拉取软件包仓库
-#echo 'src-git kwpackages https://github.com/Jaykwok2999/istoreos-ipk.git;main' >> feeds.conf.default
+#echo 'src-git kwpackages https://github.com/xiangfeidexiaohuo/2305-ipk.git;main' >> feeds.conf.default
