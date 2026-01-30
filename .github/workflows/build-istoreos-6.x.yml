@@ -99,10 +99,12 @@ jobs:
         $GITHUB_WORKSPACE/$DIY_P1_SH
 
     - name: 更新 feeds
-      run: cd openwrt && ./scripts/feeds update -a
-
-    - name: 安装 feeds
-      run: cd openwrt && ./scripts/feeds install -a
+      run: |
+        cd openwrt
+        ./scripts/feeds update -a
+        cp -a $GITHUB_WORKSPACE/FILES/node-pnpm feeds/packages/lang/
+        ./scripts/feeds update packages
+        ./scripts/feeds install -a
 
     - name: 加载自定义配置
       env:
