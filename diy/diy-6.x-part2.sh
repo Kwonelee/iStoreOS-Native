@@ -56,11 +56,6 @@ cp -f $GITHUB_WORKSPACE/configfiles/dts/rk3568/rk3566-jp-tvbox.dts target/linux/
 # ============================================================================================================
 # 自定义DIY⬇⬇⬇
 # ============================================================================================================
-# 移除要替换的包
-rm -rf feeds/packages/net/adguardhome
-rm -rf feeds/third_party/luci-app-LingTiGameAcc
-rm -rf feeds/luci/applications/luci-app-filebrowser
-
 # clash_meta
 mkdir -p files/etc/openclash/core
 CLASH_META_URL="https://raw.githubusercontent.com/vernesong/OpenClash/core/master/meta/clash-linux-arm64.tar.gz"
@@ -83,6 +78,19 @@ rm -rf feeds/packages/lang/rust && git clone https://github.com/xiangfeidexiaohu
 rm -rf feeds/packages/lang/golang
 git clone https://github.com/sbwml/packages_lang_golang -b 26.x feeds/packages/lang/golang
 
+# node - prebuilt
+rm -rf feeds/packages/lang/node
+git clone https://github.com/sbwml/feeds_packages_lang_node-prebuilt feeds/packages/lang/node -b packages-24.10
+
+# zerotier
+rm -rf feeds/packages/net/zerotier
+git clone https://github.com/sbwml/feeds_packages_net_zerotier feeds/packages/net/zerotier
+
+# 移除要替换的包
+rm -rf feeds/packages/net/adguardhome
+rm -rf feeds/third_party/luci-app-LingTiGameAcc
+rm -rf feeds/luci/applications/luci-app-filebrowser
+
 # Git稀疏克隆，只克隆指定目录到本地
 function git_sparse_clone() {
   branch="$1" repourl="$2" && shift 2
@@ -96,7 +104,8 @@ function git_sparse_clone() {
 # 常见插件
 git_sparse_clone master https://github.com/vernesong/OpenClash luci-app-openclash
 git_sparse_clone main https://github.com/gdy666/luci-app-lucky luci-app-lucky lucky
-git_sparse_clone main https://github.com/sbwml/openwrt_pkgs filebrowser luci-app-filebrowser-go luci-app-ramfree
+git_sparse_clone main https://github.com/sbwml/luci-app-openlist2 luci-app-openlist2 openlist2
+git_sparse_clone main https://github.com/Kwonelee/openwrt-packages luci-app-ramfree filebrowser luci-app-filebrowser-go
 FB_VERSION="$(curl -s https://github.com/filebrowser/filebrowser/tags | grep -Eo 'v[0-9]+\.[0-9]+\.[0-9]+' | head -n 1 | sed 's/^v//')"
-sed -i "s/2.31.2/$FB_VERSION/g" package/new/filebrowser/Makefile
+sed -i "s/2.54.0/$FB_VERSION/g" package/new/filebrowser/Makefile
 git clone --depth=1 -b master https://github.com/w9315273/luci-app-adguardhome package/new/luci-app-adguardhome
