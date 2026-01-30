@@ -102,7 +102,7 @@ jobs:
       run: |
         cd openwrt
         ./scripts/feeds update -a
-        cp -a $GITHUB_WORKSPACE/FILES/node-pnpm feeds/packages/lang/
+        cp -a $GITHUB_WORKSPACE/configfiles/node-pnpm feeds/packages/lang/
         ./scripts/feeds update packages
         ./scripts/feeds install -a
 
