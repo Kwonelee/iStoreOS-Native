@@ -84,7 +84,7 @@ git clone https://github.com/sbwml/feeds_packages_lang_node-prebuilt feeds/packa
 
 # zerotier
 rm -rf feeds/packages/net/zerotier
-git clone https://git.cooluc.com/sbwml/feeds_packages_net_zerotier feeds/packages/net/zerotier
+git clone https://github.com/sbwml/feeds_packages_net_zerotier feeds/packages/net/zerotier
 
 # 移除要替换的包
 rm -rf feeds/packages/net/adguardhome
@@ -105,8 +105,8 @@ function git_sparse_clone() {
 git_sparse_clone master https://github.com/vernesong/OpenClash luci-app-openclash
 git_sparse_clone main https://github.com/gdy666/luci-app-lucky luci-app-lucky lucky
 git_sparse_clone main https://github.com/sbwml/luci-app-openlist2 luci-app-openlist2 openlist2
+git_sparse_clone main https://github.com/sbwml/openwrt_pkgs luci-app-zerotier
 git_sparse_clone main https://github.com/Kwonelee/openwrt-packages luci-app-ramfree filebrowser luci-app-filebrowser-go
 FB_VERSION="$(curl -s https://github.com/filebrowser/filebrowser/tags | grep -Eo 'v[0-9]+\.[0-9]+\.[0-9]+' | head -n 1 | sed 's/^v//')"
 sed -i "s/2.54.0/$FB_VERSION/g" package/new/filebrowser/Makefile
 git clone --depth=1 -b master https://github.com/w9315273/luci-app-adguardhome package/new/luci-app-adguardhome
-git clone --depth=1 -b master https://git.cooluc.com/sbwml/luci-app-zerotier package/new/luci-app-zerotier
