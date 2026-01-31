@@ -56,7 +56,7 @@ jobs:
     - name: Free disk space
       uses: sbwml/actions@free-disk
       with:
-        build-mount-path: /workdir
+        build-mount-path: /$GITHUB_ENV
 
     - name: Build System Setup
       uses: sbwml/actions@openwrt-build-setup
