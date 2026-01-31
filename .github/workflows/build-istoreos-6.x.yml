@@ -32,14 +32,16 @@ jobs:
       fail-fast: false
 
     steps:
-    - name: Free disk space
-      uses: sbwml/actions@free-disk
-
     - name: 创建工作目录
       run: |
         mkdir -p ${GITHUB_WORKSPACE}/workdir
         chmod 755 ${GITHUB_WORKSPACE}/workdir
         echo "WORKDIR=$PWD" >> $GITHUB_ENV
+
+    - name: Free disk space
+      uses: sbwml/actions@free-disk
+      with:
+        build-mount-path: /workdir
 
     - name: 检查服务器配置
       run: |
