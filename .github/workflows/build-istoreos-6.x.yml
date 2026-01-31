@@ -59,7 +59,7 @@ jobs:
         build-mount-path: /$GITHUB_ENV
 
     - name: Build System Setup
-      uses: sbwml/actions@openwrt-build-setup
+      uses: Kwonelee/actions@openwrt-build-setup
 
     - name: Install LLVM
       uses: sbwml/actions@install-llvm
