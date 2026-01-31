@@ -34,10 +34,10 @@ jobs:
     steps:
     - name: Setup variables
       run: |
-        sudo timedatectl set-timezone 'Asia/Shanghai'
         mkdir -p ${GITHUB_WORKSPACE}/workdir
         chmod 755 ${GITHUB_WORKSPACE}/workdir
         echo "WORKDIR=$PWD" >> $GITHUB_ENV
+        sudo timedatectl set-timezone 'Asia/Shanghai'
 
     - name: Show system
       run: |
@@ -55,8 +55,6 @@ jobs:
 
     - name: Free disk space
       uses: sbwml/actions@free-disk
-      with:
-        build-mount-path: /$GITHUB_ENV
 
     - name: Build System Setup
       uses: Kwonelee/actions@openwrt-build-setup
