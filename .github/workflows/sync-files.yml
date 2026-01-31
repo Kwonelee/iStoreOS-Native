@@ -119,6 +119,11 @@ jobs:
            sed -i 's/^CONFIG_MODEMMANAGER_WITH_MBIM=y/# CONFIG_MODEMMANAGER_WITH_MBIM is not set/' ./armv8/.config
            sed -i 's/^CONFIG_MODEMMANAGER_WITH_QMI=y/# CONFIG_MODEMMANAGER_WITH_QMI is not set/' ./armv8/.config
            sed -i 's/^CONFIG_MODEMMANAGER_WITH_QRTR=y/# CONFIG_MODEMMANAGER_WITH_QRTR is not set/' ./armv8/.config
+           
+           sed -i 's/^CONFIG_PACKAGE_webdav2=y/# CONFIG_PACKAGE_webdav2 is not set/' ./armv8/.config
+           sed -i 's/^CONFIG_PACKAGE_unishare=y/# CONFIG_PACKAGE_unishare is not set/' ./armv8/.config
+           sed -i 's/^CONFIG_PACKAGE_luci-app-unishare=y/# CONFIG_PACKAGE_luci-app-unishare is not set/' ./armv8/.config
+           sed -i 's/^CONFIG_PACKAGE_luci-i18n-unishare-zh-cn=y/# CONFIG_PACKAGE_luci-i18n-unishare-zh-cn is not set/' ./armv8/.config
            # ----------------结束----------------
            echo -e "\\n$configdata" >> ./armv8/.config
            # 清除.config配置文件里面重复的配置项
