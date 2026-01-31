@@ -32,14 +32,20 @@ jobs:
       fail-fast: false
 
     steps:
-    - name: Setup variables
+    - name: 合并磁盘
+      uses: sbwml/actions@free-disk
+
+    - name: 准备完成
+      uses: actions/checkout@main
+
+    - name: 创建目录设置变量
       run: |
         mkdir -p ${GITHUB_WORKSPACE}/workdir
         chmod 755 ${GITHUB_WORKSPACE}/workdir
         echo "WORKDIR=$PWD" >> $GITHUB_ENV
         sudo timedatectl set-timezone 'Asia/Shanghai'
 
-    - name: Show system
+    - name: 检查服务器配置
       run: |
         echo -e "\n\e[1;32mCPU:\e[0m"
         echo "$(grep 'model name' /proc/cpuinfo | head -1 | awk -F ': ' '{print $2}') ($(grep 'cpu MHz' /proc/cpuinfo | head -1 | awk -F ': ' '{print $2}')MHz) x $(grep processor /proc/cpuinfo  | wc -l)"
@@ -53,10 +59,7 @@ jobs:
         uname -a
         echo
 
-    - name: Free disk space
-      uses: sbwml/actions@free-disk
-
-    - name: Build System Setup
+    - name: 初始化编译环境
       shell: bash
       env:
         DEBIAN_FRONTEND: noninteractive
@@ -71,7 +74,7 @@ jobs:
         sudo -E n stable
         sudo apt-get clean
 
-    - name: Install LLVM
+    - name: 安装 LLVM
       uses: sbwml/actions@install-llvm
 
     - name: 克隆源码
