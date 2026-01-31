@@ -90,6 +90,7 @@ git clone https://github.com/sbwml/feeds_packages_net_zerotier feeds/packages/ne
 rm -rf feeds/packages/net/adguardhome
 rm -rf feeds/third_party/luci-app-LingTiGameAcc
 rm -rf feeds/luci/applications/luci-app-filebrowser
+rm -rf feeds/third_party/luci-app-zerotier
 
 # Git稀疏克隆，只克隆指定目录到本地
 function git_sparse_clone() {
