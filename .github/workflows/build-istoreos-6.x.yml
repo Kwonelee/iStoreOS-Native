@@ -42,7 +42,7 @@ jobs:
       run: |
         mkdir -p ${GITHUB_WORKSPACE}/workdir
         chmod 755 ${GITHUB_WORKSPACE}/workdir
-        echo "WORKDIR=$PWD" >> $GITHUB_ENV
+        echo "WORKDIR_PATH=$PWD" >> $GITHUB_ENV
         sudo timedatectl set-timezone 'Asia/Shanghai'
 
     - name: 检查服务器配置
@@ -78,11 +78,11 @@ jobs:
       uses: sbwml/actions@install-llvm
 
     - name: 克隆源码
-      working-directory: ${{ env.WORKDIR }}/workdir
+      working-directory: ${{ env.WORKDIR_PATH }}/workdir
       run: |
         df -hT $PWD
         git clone $REPO_URL -b ${{ matrix.REPO_BRANCH }} openwrt
-        ln -sf ${{ env.WORKDIR }}/workdir/openwrt $GITHUB_WORKSPACE/openwrt
+        ln -sf ${{ env.WORKDIR_PATH }}/workdir/openwrt $GITHUB_WORKSPACE/openwrt
 
     - name: 缓存构建动作
       uses: klever1988/cachewrtbuild@main
