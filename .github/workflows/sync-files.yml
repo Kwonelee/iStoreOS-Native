@@ -137,7 +137,7 @@ jobs:
         fi
 
     - name: 同步配置
-      uses: peaceiris/actions-gh-pages@main
+      uses: peaceiris/actions-gh-pages@v3
       with:
         personal_token: ${{ secrets.GH_TOKEN }}
         publish_branch: main
