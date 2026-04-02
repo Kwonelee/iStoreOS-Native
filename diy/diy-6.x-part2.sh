@@ -95,6 +95,7 @@ git clone https://github.com/sbwml/feeds_packages_net_zerotier feeds/packages/ne
 
 # 移除要替换的包
 rm -rf feeds/packages/net/adguardhome
+rm -rf feeds/luci/applications/luci-app-adguardhome
 rm -rf feeds/third_party/luci-app-LingTiGameAcc
 rm -rf feeds/luci/applications/luci-app-filebrowser
 rm -rf feeds/third_party/luci-app-zerotier
