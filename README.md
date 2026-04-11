@@ -1,6 +1,6 @@
 <div align="center">
   <img src="./configfiles/screenshot/istoreos.png" style="max-width: 100%; height: auto;" />
-  <h1>基于官方源码编译的iStoreOS固件</h1>
+  <h1>✨ 基于官方源码编译的iStoreOS固件 ✨</h1>
 
   <img src="https://img.shields.io/github/downloads/Kwonelee/iStoreOS-Native/total.svg?style=for-the-badge&color=32C955"/>
   <img src="https://img.shields.io/github/stars/Kwonelee/iStoreOS-Native.svg?style=for-the-badge&color=orange"/>
