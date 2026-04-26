@@ -1,0 +1,211 @@
+name: Build iStore OS 6.x
+
+on:
+  repository_dispatch:
+  workflow_dispatch:
+  # schedule:
+   # - cron: 40 15 * * 3
+
+env:
+  REPO_URL: https://github.com/istoreos/istoreos
+  FEEDS_CONF: feeds.conf
+  CONFIG_FILE: .config
+  DIY_P1_SH: diy/diy-6.x-part1.sh
+  DIY_P2_SH: diy/diy-6.x-part2.sh
+  UPLOAD_BIN_DIR: true
+  UPLOAD_FIRMWARE: true
+  UPLOAD_RELEASE: true
+  GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        REPO_BRANCH:
+          - istoreos-24.10
+        ARCHITECTURE:
+          - armv8
+        os:
+          - ubuntu-24.04
+
+      fail-fast: false
+
+    steps:
+    - name: 合并磁盘
+      uses: sbwml/actions@free-disk
+
+    - name: 准备完成
+      uses: actions/checkout@main
+
+    - name: 创建目录
+      run: |
+        mkdir -p ${GITHUB_WORKSPACE}/workdir
+        chmod 755 ${GITHUB_WORKSPACE}/workdir
+        echo "WORKDIR_PATH=$PWD" >> $GITHUB_ENV
+        sudo timedatectl set-timezone 'Asia/Shanghai'
+
+    - name: 检查服务器配置
+      run: |
+        echo -e "\n\e[1;32mCPU:\e[0m"
+        echo "$(grep 'model name' /proc/cpuinfo | head -1 | awk -F ': ' '{print $2}') ($(grep 'cpu MHz' /proc/cpuinfo | head -1 | awk -F ': ' '{print $2}')MHz) x $(grep processor /proc/cpuinfo  | wc -l)"
+        echo -e "\n\e[1;32mMemory:\e[0m"
+        free -h
+        echo -e "\n\e[1;32mStorage:\e[0m"
+        df -Th / /mnt
+        echo -e "\n\e[1;32mSystem:\e[0m"
+        lsb_release -a
+        echo -e "\n\e[1;32mKernel:\e[0m"
+        uname -a
+        echo
+
+    - name: 初始化编译环境
+      shell: bash
+      env:
+        DEBIAN_FRONTEND: noninteractive
+      run: |
+        sudo rm -rf /etc/apt/sources.list.d
+        sudo bash -c "curl -skL https://raw.githubusercontent.com/sbwml/actions/openwrt-build-setup/sources-24.04.list > /etc/apt/sources.list"
+        sudo apt-get update
+        sudo apt-get install -y build-essential flex bison cmake g++ gawk gcc-multilib g++-multilib gettext git gnutls-dev libfuse-dev libncurses5-dev libssl-dev python3 python3-pip python3-ply python3-pyelftools rsync unzip zlib1g-dev file wget subversion patch upx-ucl autoconf automake curl asciidoc binutils bzip2 lib32gcc-s1 libc6-dev-i386 uglifyjs msmtp texinfo libreadline-dev libglib2.0-dev xmlto libelf-dev libtool autopoint antlr3 gperf ccache swig coreutils haveged scons libpython3-dev rename qemu-utils jq
+        sudo apt-get install -y npm
+        sudo -E npm install -g pnpm
+        sudo -E npm install -g n
+        sudo -E n stable
+        sudo apt-get clean
+
+    - name: 安装 LLVM
+      uses: sbwml/actions@install-llvm
+
+    - name: 克隆源码
+      working-directory: ${{ env.WORKDIR_PATH }}/workdir
+      run: |
+        df -hT $PWD
+        git clone $REPO_URL -b ${{ matrix.REPO_BRANCH }} openwrt
+        ln -sf ${{ env.WORKDIR_PATH }}/workdir/openwrt $GITHUB_WORKSPACE/openwrt
+
+    - name: 缓存构建动作
+      uses: klever1988/cachewrtbuild@main
+      with:
+        ccache: 'true'
+        mixkey: ${{ matrix.os }}-${{ matrix.ARCHITECTURE }}-${{ matrix.REPO_BRANCH }}
+        prefix: ${{ github.workspace }}/openwrt
+
+    - name: 加载自定义 feeds
+      env:
+        FEEDS_CONF_PATH: ${{ matrix.ARCHITECTURE }}/${{ env.FEEDS_CONF }}
+      run: |
+        [ -e $FEEDS_CONF_PATH ] && mv $FEEDS_CONF_PATH openwrt/$FEEDS_CONF
+        chmod +x $DIY_P1_SH
+        cd openwrt
+        $GITHUB_WORKSPACE/$DIY_P1_SH
+
+    - name: 更新 feeds
+      run: |
+        cd openwrt
+        ./scripts/feeds update -a
+        ./scripts/feeds install -a
+        cp -a $GITHUB_WORKSPACE/configfiles/node-pnpm feeds/packages/lang/
+        ./scripts/feeds update packages
+        ./scripts/feeds install -a
+
+    - name: 加载自定义配置
+      env:
+        CONFIG_FILE_PATH: ${{ matrix.ARCHITECTURE }}/${{ env.CONFIG_FILE }}
+      run: |
+        [ -e files ] && mv files openwrt/files
+        [ -e $CONFIG_FILE_PATH ] && mv $CONFIG_FILE_PATH openwrt/$CONFIG_FILE
+        chmod +x $DIY_P2_SH
+        cd openwrt
+        $GITHUB_WORKSPACE/$DIY_P2_SH
+
+    - name: 下载软件包
+      id: package
+      run: |
+        cd openwrt
+        make defconfig
+        make download -j8
+        find dl -size -1024c -exec ls -l {} \;
+        find dl -size -1024c -exec rm -f {} \;
+
+    # ========== 已修复：解决 target/linux install 报错核心段 ==========
+    - name: 编译固件
+      id: compile
+      run: |
+        cd openwrt
+        # 清理内核残留缓存、解决安装阶段冲突
+        make target/linux/clean
+        rm -rf tmp build_dir staging_dir
+        # 重置配置
+        make defconfig
+        # RK平台强制单线程编译，彻底规避文件锁/并发冲突
+        echo "Single thread compile fix for rockchip"
+        make -j1 V=s
+        echo "FILE_DATE=_$(date +"%Y%m%d%H%M")" >> $GITHUB_ENV
+        echo "status=success" >> ${GITHUB_OUTPUT}
+
+    - name: 检查磁盘空间
+      if: (!cancelled())
+      run: df -hT
+
+    - name: 上传 bin 文件夹
+      uses: actions/upload-artifact@main
+      if: steps.compile.outputs.status == 'success' && env.UPLOAD_BIN_DIR == 'true'
+      with:
+        name: OpenWrt_bin${{ env.FILE_DATE }}
+        path: openwrt/bin
+
+    - name: 整理固件文件
+      id: organize
+      if: env.UPLOAD_FIRMWARE == 'true' && !cancelled()
+      run: |
+        cd openwrt/bin/targets/*/*
+        rm -rf packages
+        echo "FIRMWARE=$PWD" >> $GITHUB_ENV
+        echo "status=success" >> ${GITHUB_OUTPUT}
+
+    - name: 上传固件目录
+      uses: actions/upload-artifact@main
+      if: steps.organize.outputs.status == 'success' && !cancelled()
+      with:
+        name: OpenWrt_firmware${{ env.FILE_DATE }}
+        path: ${{ env.FIRMWARE }}
+
+    - name: 生成发布标签
+      id: tag
+      if: steps.compile.outputs.status == 'success' && env.UPLOAD_RELEASE == 'true' && !cancelled()
+      run: |
+        echo "release_tag=$(date +"%Y.%m.%d-%H.%M")-${{ matrix.ARCHITECTURE }}" >> ${GITHUB_OUTPUT}
+        touch release.txt
+        echo "
+        🖥️ Architecture: rockchip-${{ matrix.ARCHITECTURE }}
+
+        🔀 Branch: ${{ matrix.REPO_BRANCH }}
+
+        📂 Source Code: ${{ env.REPO_URL }}
+
+        🕒 Compilation Time: $(date +"%Y年%m月%d日%H时%M分") " >> release.txt
+        echo "status=success" >> ${GITHUB_OUTPUT}
+
+    - name: 自动发布固件到 Releases
+      uses: softprops/action-gh-release@v2.2.1
+      if: steps.tag.outputs.status == 'success' && env.UPLOAD_RELEASE == 'true' && !cancelled()
+      with:
+        tag_name: ${{ steps.tag.outputs.release_tag }}
+        body_path: release.txt
+        files: |
+          ${{ env.FIRMWARE }}/*squashfs-sysupgrade.img.gz
+
+    - name: 删除运行记录
+      uses: Mattraks/delete-workflow-runs@main
+      with:
+        retain_days: 1
+        keep_minimum_runs: 1
+        token: ${{ env.GH_TOKEN }}
+
+    - name: 删除自动发布的旧固件
+      uses: dev-drprasad/delete-older-releases@master
+      if: env.UPLOAD_RELEASE == 'true' && !cancelled()
+      with:
+        keep_latest: 15
+        delete_tags: true
