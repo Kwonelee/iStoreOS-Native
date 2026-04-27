@@ -35,7 +35,7 @@ cp -f $GITHUB_WORKSPACE/configfiles/patch/990-rockchip-rk3399-emb-3531-kernel.pa
 # 移植RK3566示例，其他RK35xx可模仿
 # ============================================================================================================
 # 增加设备
-cp -f $GITHUB_WORKSPACE/configfiles/uboot-rockchip/Makefile target/linux/rockchip/image/Makefile
+cp -f $GITHUB_WORKSPACE/configfiles/uboot-rockchip/legacy.mk target/linux/rockchip/image/legacy.mk
 
 # 复制dts与配置文件到package/boot/uboot-rockchip
 #cp -f $GITHUB_WORKSPACE/configfiles/dts/rk3568/rk3566-roc-pc.dts package/boot/uboot-rockchip/src/arch/arm/dts/
