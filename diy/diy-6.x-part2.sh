@@ -35,15 +35,15 @@ cp -f $GITHUB_WORKSPACE/configfiles/patch/990-rockchip-rk3399-emb-3531-kernel.pa
 # 移植RK3566示例，其他RK35xx可模仿
 # ============================================================================================================
 # 增加设备
-cp -f $GITHUB_WORKSPACE/configfiles/uboot-rockchip/legacy.mk target/linux/rockchip/image/legacy.mk
+cp -f $GITHUB_WORKSPACE/configfiles/uboot-rockchip/Makefile target/linux/rockchip/image/Makefile
 
 # 复制dts与配置文件到package/boot/uboot-rockchip
-cp -f $GITHUB_WORKSPACE/configfiles/dts/rk3568/rk3566-roc-pc.dts package/boot/uboot-rockchip/src/arch/arm/dts/
-cp -f $GITHUB_WORKSPACE/configfiles/uboot-rockchip/rk3566-station-m2-u-boot.dtsi package/boot/uboot-rockchip/src/arch/arm/dts/
-cp -f $GITHUB_WORKSPACE/configfiles/uboot-rockchip/station-m2-rk3566_defconfig package/boot/uboot-rockchip/src/configs/
+#cp -f $GITHUB_WORKSPACE/configfiles/dts/rk3568/rk3566-roc-pc.dts package/boot/uboot-rockchip/src/arch/arm/dts/
+#cp -f $GITHUB_WORKSPACE/configfiles/uboot-rockchip/rk3566-station-m2-u-boot.dtsi package/boot/uboot-rockchip/src/arch/arm/dts/
+#cp -f $GITHUB_WORKSPACE/configfiles/uboot-rockchip/station-m2-rk3566_defconfig package/boot/uboot-rockchip/src/configs/
 
 # 复制dts到target/linux/rockchip/dts/rk3568
-cp -f $GITHUB_WORKSPACE/configfiles/dts/rk3568/rk3566-jp-tvbox.dts target/linux/rockchip/dts/rk3568/
+#cp -f $GITHUB_WORKSPACE/configfiles/dts/rk3568/rk3566-jp-tvbox.dts target/linux/rockchip/dts/rk3568/
 # ============================================================================================================
 # RK35xx示例结束
 # ============================================================================================================
