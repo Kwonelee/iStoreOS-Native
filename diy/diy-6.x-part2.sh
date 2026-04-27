@@ -10,16 +10,24 @@
 # ============================================================================================================
 # 移植RK3399示例，其他RK3399可模仿
 # ============================================================================================================
-# 增加 emb-3531 设备
-echo -e "\ndefine Device/rk3399_emb-3531
-  DEVICE_VENDOR := Rockchip
-  DEVICE_MODEL := EMB-3531
-  SOC := rk3399
-  UBOOT_DEVICE_NAME := emb-3531-rk3399
-  IMAGE/sysupgrade.img.gz := boot-common | boot-script | pine64-img | gzip | append-metadata
-  DEVICE_PACKAGES := kmod-r8169 -urngd
-endef
-TARGET_DEVICES += rk3399_emb-3531" >> target/linux/rockchip/image/armv8.mk
+# 增加 emb-3531 设备【修复规范，适配官方结构】
+ echo -e "\n# RK3399
+ define Device/Legacy/rk3399
+ \$(call Device/Legacy,\$(1))
+   SOC := rk3399
+   BOOT_SCRIPT := rk3399
+ endef
+ define Device/norco_emb-3531
+ \$(call Device/Legacy/rk3399,\$(1))
+   DEVICE_VENDOR := Norco
+   DEVICE_MODEL := EMB-3531
+   UBOOT_DEVICE_NAME := emb-3531-rk3399
+   SUPPORTED_DEVICES += norco,emb-3531
+   DEVICE_DTS := rk3399/rk3399-emb-3531
+   IMAGE/sysupgrade.img.gz := boot-common | boot-script | pine64-img | gzip | append-metadata
+   DEVICE_PACKAGES := kmod-r8169 -urngd
+ endef
+ TARGET_DEVICES += norco_emb-3531" >> target/linux/rockchip/image/armv8.mk
 
 # 复制U-Boot补丁到package/boot/uboot-rockchip/patches
 cp -f $GITHUB_WORKSPACE/configfiles/patch/990-rockchip-rk3399-emb-3531-uboot.patch package/boot/uboot-rockchip/patches/
