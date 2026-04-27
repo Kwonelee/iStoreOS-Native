@@ -42,7 +42,7 @@ cp -f $GITHUB_WORKSPACE/configfiles/dts/rk3399/{rk3399.dtsi,rk3399-opp.dtsi,rk33
 cp -f $GITHUB_WORKSPACE/configfiles/patch/800-add-rk3399-tvi3315a-dtb-to-makefile.patch target/linux/rockchip/patches-6.6/
 # ============================================================================================================
 # 增加设备
-cp -f $GITHUB_WORKSPACE/configfiles/uboot-rockchip/Makefile target/linux/rockchip/image/Makefile
+# cp -f $GITHUB_WORKSPACE/configfiles/uboot-rockchip/Makefile target/linux/rockchip/image/Makefile
 
 # RK3399示例结束
 # ============================================================================================================
