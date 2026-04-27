@@ -121,11 +121,11 @@ define U-Boot/rk3399/Default
   ATF:=rk3399_bl31.elf
 endef
 
-define U-Boot/tvi3315a-rk3399
+define U-Boot/emb-3531-rk3399
   $(U-Boot/rk3399/Default)
-  NAME:=TVI3315A
+  NAME:=EMB-3531
   BUILD_DEVICES:= \
-    tvi_tvi3315a
+    norco_emb-3531
 endef
 
 define U-Boot/nanopc-t4-rk3399
@@ -362,7 +362,7 @@ UBOOT_TARGETS := \
   nanopi-r4se-rk3399 \
   rock-pi-4-rk3399 \
   rockpro64-rk3399 \
-  tvi3315a-rk3399 \
+  emb-3531-rk3399\
   rock-pi-s-rk3308 \
   nanopi-r2c-rk3328 \
   nanopi-r2c-plus-rk3328 \
