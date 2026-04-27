@@ -1,5 +1,4 @@
-CONFIG_TARGET_DEVICE_rockchip_armv8_DEVICE_tvi_tvi3315a=y
-CONFIG_TARGET_DEVICE_rockchip_armv8_DEVICE_jp_jp-tvbox=y
+CONFIG_TARGET_DEVICE_rockchip_armv8_DEVICE_rk3399_emb-3531=y
 
 CONFIG_PACKAGE_luci-app-adguardhome=y
 CONFIG_PACKAGE_luci-i18n-adguardhome-zh-cn=y
