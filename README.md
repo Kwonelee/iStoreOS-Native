@@ -67,7 +67,6 @@
 ## 🎉 Thanks [![](https://img.shields.io/badge/-Thanks-FFFFFF.svg)](#-Thanks-)
 - [istoreos](https://github.com/istoreos/istoreos)
 - [linux-6.6.y](https://github.com/unifreq/linux-6.6.y)
-- [Actions-iStoreOS-RK35XX-24.10](https://github.com/xiaomeng9597/Actions-iStoreOS-RK35XX-24.10)
 
 ## 🙏 免责声明 [![](https://img.shields.io/badge/-免责声明-FFFFFF.svg)](#-免责声明-)
 - 📚 本固件仅供学习研究，严禁用于任何商业用途
