@@ -32,7 +32,7 @@
 
 ## 😅 第三方插件 [![](https://img.shields.io/badge/-第三方插件-FFFFFF.svg)](#-第三方插件-)
 | 插件                     |  状态   | 源码地址                                                                    | 备注         |
-|:------------------------:|:------:| ---------------------------------------------------------------------------- | ------------ |
+|:------------------------:|:------:| ---------------------------------------------------------------------------- |:------------:|
 | luci-app-ramfree         |  ✅   | [Kwonelee/openwrt-packages](https://github.com/Kwonelee/openwrt-packages)    | 🟢 已测试    |
 | luci-app-filebrowser-go  |  ✅   | [Kwonelee/openwrt-packages](https://github.com/Kwonelee/openwrt-packages)    | 🟢 已测试    |
 | luci-app-adguardhome     |  ⏳   | [w9315273/adguardhome](https://github.com/w9315273/luci-app-adguardhome)      |  -           |
