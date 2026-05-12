@@ -10,8 +10,9 @@ env:
   REPO_URL: https://github.com/istoreos/istoreos
   FEEDS_CONF: feeds.conf
   CONFIG_FILE: .config
-  DIY_P1_SH: diy/diy-6.x-part1.sh
-  DIY_P2_SH: diy/diy-6.x-part2.sh
+  DIY_P1_SH: script/01_get_ready.sh
+  DIY_P2_SH: script/02_add_device.sh
+  DIY_P3_SH: script/03_custom_diy.sh
   UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: true
   UPLOAD_RELEASE: true
@@ -115,8 +116,10 @@ jobs:
         [ -e files ] && mv files openwrt/files
         [ -e $CONFIG_FILE_PATH ] && mv $CONFIG_FILE_PATH openwrt/$CONFIG_FILE
         chmod +x $DIY_P2_SH
+        chmod +x $DIY_P3_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
+        $GITHUB_WORKSPACE/$DIY_P3_SH
 
     - name: 下载软件包
       id: package
