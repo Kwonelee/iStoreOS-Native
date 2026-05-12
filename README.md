@@ -35,7 +35,7 @@
 |:------------------------:|:------:| ---------------------------------------------------------------------------- | ------------ |
 | luci-app-ramfree         |  ✅   | [Kwonelee/openwrt-packages](https://github.com/Kwonelee/openwrt-packages)    | 🟢 已测试    |
 | luci-app-filebrowser-go  |  ✅   | [Kwonelee/openwrt-packages](https://github.com/Kwonelee/openwrt-packages)    | 🟢 已测试    |
-| luci-app-adguardhome     |  ⏳   | [w9315273/adguardhome](https://github.com/w9315273/luci-app-adguardhome)      |              |
+| luci-app-adguardhome     |  ⏳   | [w9315273/adguardhome](https://github.com/w9315273/luci-app-adguardhome)      |  -           |
 | luci-app-openlist2       |  ✅   | [sbwml/luci-app-openlist2](https://github.com/sbwml/luci-app-openlist2)      | 🟢 已测试     |
 | luci-app-lucky           |  ✅   | [gdy666/luci-app-lucky](https://github.com/gdy666/luci-app-lucky)            | 🟢 已测试     |
 | luci-app-zerotier        |  ✅   | [sbwml/openwrt_pkgs](https://github.com/sbwml/openwrt_pkgs)                  | 🟢 已测试     |
