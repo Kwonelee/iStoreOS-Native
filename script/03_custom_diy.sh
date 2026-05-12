@@ -35,7 +35,7 @@ git clone https://github.com/sbwml/packages_lang_golang -b 26.x feeds/packages/l
 
 # node - prebuilt
 rm -rf feeds/packages/lang/node
-git clone https://github.com/sbwml/feeds_packages_lang_node-prebuilt feeds/packages/lang/node -b packages-24.10
+git clone https://github.com/sbwml/feeds_packages_lang_node feeds/packages/lang/node -b packages-24.10
 
 # zerotier
 rm -rf feeds/packages/net/zerotier
