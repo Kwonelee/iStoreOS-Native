@@ -1,19 +1,6 @@
 #!/bin/bash -e
-#===============================================
-# Description: DIY script
-# File name: diy-script.sh
-# Lisence: MIT
-# Author: P3TERX
-# Blog: https://p3terx.com
-#===============================================
 
 # 修复系统kernel内核md5校验码不正确的问题
-# https://downloads.openwrt.org/releases/24.10.5/targets/rockchip/armv8/kmods/
-# https://archive.openwrt.org/releases/24.10.5/targets/rockchip/armv8/kmods/
-# https://mirrors.tuna.tsinghua.edu.cn/openwrt/releases/24.10.5/targets/rockchip/armv8/kmods/
-# https://mirrors.cqupt.edu.cn/openwrt/releases/24.10.5/targets/rockchip/armv8/kmods/
-# https://mirrors.ustc.edu.cn/openwrt/releases/24.10.5/targets/rockchip/armv8/kmods/
-
 hash_value=""
 Releases_version=$(cat include/version.mk | sed -n 's|.*releases/\([^)]*\)).*|\1|p')
 
@@ -62,5 +49,5 @@ echo $date_version > version
 #sed -i "s/DISTRIB_DESCRIPTION.*/DISTRIB_DESCRIPTION='%D %V ${date_version} by ${author}'/g" package/base-files/files/etc/openwrt_release
 #sed -i "s/OPENWRT_RELEASE.*/OPENWRT_RELEASE=\"%D %V ${date_version} by ${author}\"/g" package/base-files/files/usr/lib/os-release
 
-# 拉取软件包仓库
+# 拉取自定义软件包仓库
 #echo 'src-git kwpackages https://github.com/xiangfeidexiaohuo/2305-ipk.git;main' >> feeds.conf.default
