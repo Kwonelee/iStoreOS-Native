@@ -10,9 +10,9 @@ env:
   REPO_URL: https://github.com/istoreos/istoreos
   FEEDS_CONF: feeds.conf
   CONFIG_FILE: .config
-  DIY_P1_SH: script/01_get_ready.sh
-  DIY_P2_SH: script/02_add_device.sh
-  DIY_P3_SH: script/03_custom_diy.sh
+  DIY_P1_SH: scripts/01_get_ready.sh
+  DIY_P2_SH: scripts/02_add_device.sh
+  DIY_P3_SH: scripts/03_custom_diy.sh
   UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: true
   UPLOAD_RELEASE: true
