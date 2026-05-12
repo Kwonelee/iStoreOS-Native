@@ -25,9 +25,6 @@ cp -f $GITHUB_WORKSPACE/configfiles/dts/rk3399/{rk3399.dtsi,rk3399-opp.dtsi,rk33
 
 # 添加dtb补丁到target/linux/rockchip/patches-6.6
 cp -f $GITHUB_WORKSPACE/configfiles/patch/800-add-rk3399-tvi3315a-dtb-to-makefile.patch target/linux/rockchip/patches-6.6/
-# ============================================================================================================
-# RK3399示例结束
-# ============================================================================================================
 
 # ============================================================================================================
 # 移植RK3566示例，其他RK35xx可模仿
@@ -42,6 +39,3 @@ cp -f $GITHUB_WORKSPACE/configfiles/uboot-rockchip/station-m2-rk3566_defconfig p
 
 # 复制dts到target/linux/rockchip/dts/rk3568
 cp -f $GITHUB_WORKSPACE/configfiles/dts/rk3568/rk3566-jp-tvbox.dts target/linux/rockchip/dts/rk3568/
-# ============================================================================================================
-# RK35xx示例结束
-# ============================================================================================================
