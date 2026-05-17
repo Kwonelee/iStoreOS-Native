@@ -135,7 +135,13 @@ jobs:
       run: |
         cd openwrt
         echo -e "$(nproc) thread compile"
-        make -j$(nproc) || make -j1 || make -j1 V=s
+        if ! make -j$(nproc); then
+          echo "::error::多线程编译失败，输出详细日志..."
+          echo "::group::📋 详细编译日志（V=s）"
+          make -j1 V=s
+          echo "::endgroup::"
+          exit 1
+        fi
         echo "FILE_DATE=_$(date +"%Y%m%d%H%M")" >> $GITHUB_ENV
         echo "status=success" >> ${GITHUB_OUTPUT}
 
