@@ -11,16 +11,6 @@ sed -i 's/procd_set_param stderr 1/procd_set_param stderr 0/g' feeds/packages/ut
 # samba4 default config
 sed -i 's/invalid users = root/#invalid users = root/g' feeds/packages/net/samba4/files/smb.conf.template
 
-# clash_meta
-mkdir -p files/etc/openclash/core
-CLASH_META_URL="https://raw.githubusercontent.com/vernesong/OpenClash/core/master/meta/clash-linux-arm64.tar.gz"
-wget -qO- $CLASH_META_URL | tar xOvz > files/etc/openclash/core/clash_meta
-chmod +x files/etc/openclash/core/clash*
-
-# clash_config
-#mkdir -p files/etc/config
-#wget -qO- https://raw.githubusercontent.com/Kwonelee/Kwonelee/refs/heads/main/rule/openclash > files/etc/config/openclash
-
 # 集成无线驱动
 mkdir -p package/base-files/files/lib/firmware/brcm
 cp -a $GITHUB_WORKSPACE/configfiles/firmware/brcm/* package/base-files/files/lib/firmware/brcm/
@@ -59,7 +49,6 @@ function git_sparse_clone() {
 }
 
 # 常见插件
-git_sparse_clone master https://github.com/vernesong/OpenClash luci-app-openclash
 git_sparse_clone main https://github.com/gdy666/luci-app-lucky luci-app-lucky lucky
 cp -f $GITHUB_WORKSPACE/configfiles/lucky_status.htm package/new/luci-app-lucky/luasrc/view/lucky/lucky_status.htm
 git_sparse_clone main https://github.com/sbwml/luci-app-openlist2 luci-app-openlist2 openlist2
